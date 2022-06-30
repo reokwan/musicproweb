@@ -1,7 +1,7 @@
-"""carritoweb URL Configuration
+"""Carrito URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from home.views import tienda
+from CarritoApp.views import tienda, agregar_producto, eliminar_producto, restar_producto, limpiar_carrito
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tienda, name="Tienda"),
+    path('agregar/<int:producto_id>/', agregar_producto, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
+    path('restar/<int:producto_id>/', restar_producto, name="Sub"),
+    path('limpiar/', limpiar_carrito, name="CLS"),
 ]
